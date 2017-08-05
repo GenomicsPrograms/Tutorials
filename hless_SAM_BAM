@@ -1,0 +1,13 @@
+When you have a headerless SAM and want to create a BAM:
+
+samtools faidx sequence.fa
+
+This creates the index file *.fai. The final command for conversion is
+
+samtools view -bt sequence.fa.fai -S bowtie.glob.sam > bowtie.glob.bam
+====
+
+samtools faidx all_sequences.fa
+then use the output
+
+samtools view -bS -t all_sequences.fai infile.sam > outfile.bam
