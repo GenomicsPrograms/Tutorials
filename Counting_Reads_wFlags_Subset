@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#SBATCH -N 1     # Uppercase N tells the scheduler to use a single compute node
+#SBATCH -n 3   #  Use 12 cpu cores
+#SBATCH --mem-per-cpu=4000  #  Use 4GB per core, or 48GB total
+#SBATCH -p serial   # Run in the serial partition
+#SBATCH -t 0-05:00   
+#SBATCH -A user   
+#SBATCH -o slurm.map151.out  
+#SBATCH -e slurm.map151.err  
+#SBATCH --mail-type=END,FAIL     
+#SBATCH --mail-user=email
+
+
+
+
+cd /scratch/mlinan/MIsams/project/Analysis
+
+awk ' $2  == 65 || $2 == 73 || $2 == 81 || $2 == 97 || $2 == 113 || $2 == 129 || $2 == 137 || $2 == 145 || $2 == 161 || $2 == 177 || $2 == 185 || $2 == 321 || $2 == 337 || $2 == 353 || $2 == 369 || $2 == 385 || $2 == 401 || $2 == 417 || $2 == 433 || $2 == 329 || $2 == 393 {print $0}' aln_TS5m_nh > mapped_TS5m
+awk ' $2  == 65 || $2 == 73 || $2 == 81 || $2 == 97 || $2 == 113 || $2 == 129 || $2 == 137 || $2 == 145 || $2 == 161 || $2 == 177 || $2 == 185 || $2 == 321 || $2 == 337 || $2 == 353 || $2 == 369 || $2 == 385 || $2 == 401 || $2 == 417 || $2 == 433 || $2 == 329 || $2 == 393 {print $0}' aln_TS7m_nh > mapped_TS7m
+awk ' $2  == 65 || $2 == 73 || $2 == 81 || $2 == 97 || $2 == 113 || $2 == 129 || $2 == 137 || $2 == 145 || $2 == 161 || $2 == 177 || $2 == 185 || $2 == 321 || $2 == 337 || $2 == 353 || $2 == 369 || $2 == 385 || $2 == 401 || $2 == 417 || $2 == 433 || $2 == 329 || $2 == 393 {print $0}' aln_TS11m_nh > mapped_TS11m
+awk ' $2  == 65 || $2 == 73 || $2 == 81 || $2 == 97 || $2 == 113 || $2 == 129 || $2 == 137 || $2 == 145 || $2 == 161 || $2 == 177 || $2 == 185 || $2 == 321 || $2 == 337 || $2 == 353 || $2 == 369 || $2 == 385 || $2 == 401 || $2 == 417 || $2 == 433 || $2 == 329 || $2 == 393 {print $0}' aln_TS53m_nh > mapped_TS53m
+awk ' $2  == 65 || $2 == 73 || $2 == 81 || $2 == 97 || $2 == 113 || $2 == 129 || $2 == 137 || $2 == 145 || $2 == 161 || $2 == 177 || $2 == 185 || $2 == 321 || $2 == 337 || $2 == 353 || $2 == 369 || $2 == 385 || $2 == 401 || $2 == 417 || $2 == 433 || $2 == 329 || $2 == 393 {print $0}' aln_TS54m_nh > mapped_TS54m
+
+
+echo Mapped Reads
+wc -l mapped_TS5m mapped_TS7m mapped_TS11m mapped_TS53m mapped_TS54m
+
+awk ' $2 == 69 || $2 == 77 || $2 == 117 || $2 == 121 || $2 == 133 || $2 == 141 || $2 == 181 || $2 == 377 {print $0} ' aln_TS5m_nh > unmapped_TS5m
+awk ' $2 == 69 || $2 == 77 || $2 == 117 || $2 == 121 || $2 == 133 || $2 == 141 || $2 == 181 || $2 == 377 {print $0} ' aln_TS7m_nh > unmapped_TS7m
+awk ' $2 == 69 || $2 == 77 || $2 == 117 || $2 == 121 || $2 == 133 || $2 == 141 || $2 == 181 || $2 == 377 {print $0} ' aln_TS11m_nh > unmapped_TS11m
+awk ' $2 == 69 || $2 == 77 || $2 == 117 || $2 == 121 || $2 == 133 || $2 == 141 || $2 == 181 || $2 == 377 {print $0} ' aln_TS53m_nh > unmapped_TS53m
+awk ' $2 == 69 || $2 == 77 || $2 == 117 || $2 == 121 || $2 == 133 || $2 == 141 || $2 == 181 || $2 == 377 {print $0} ' aln_TS54m_nh > unmapped_TS54m
+
+echo Unmapped Reads
+wc -l unmapped_TS5m unmapped_TS7m unmapped_TS11m unmapped_TS53m unmapped_TS54m
