@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#SBATCH -N 1     # Uppercase N tells the scheduler to use a single compute node
+#SBATCH -n 4   #  Use 12 cpu cores
+#SBATCH --mem-per-cpu=4000  #  Use 4GB per core, or 48GB total
+#SBATCH -p serial   # Run in the serial partition
+#SBATCH -t 0-15:00   
+#SBATCH -A user   
+#SBATCH -o slurm.cmdline_IT_B.out  
+#SBATCH -e slurm.cmdline_IT_B.err  
+#SBATCH --mail-type=END,FAIL     
+#SBATCH --mail-user=email
+
+cd /scratch/mlinan/data
+
+module load freebayes/0.9.21
+
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_EC49.bam -m 40 -q 30 -v IT_Baseline_EC49.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS28.bam -m 40 -q 30 -v IT_Baseline_TS28.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS80.bam -m 40 -q 30 -v IT_Baseline_TS80.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS49.bam -m 40 -q 30 -v IT_Baseline_TS49.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS115.bam -m 40 -q 30 -v IT_Baseline_TS115.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_EC70.bam -m 40 -q 30 -v IT_Baseline_EC70.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS1.bam -m 40 -q 30 -v IT_Baseline_TS1.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS51.bam -m 40 -q 30 -v IT_Baseline_TS51.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_EC61.bam -m 40 -q 30 -v IT_Baseline_EC61.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS27.bam -m 40 -q 30 -v IT_Baseline_TS27.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS41.bam -m 40 -q 30 -v IT_Baseline_TS41.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_EC83.bam -m 40 -q 30 -v IT_Baseline_EC83.vcf
+freebayes -f Sarah_exon.fa -b sorted_aln_IT_TS109.bam -m 40 -q 30 -v IT_Baseline_TS109.vcf
