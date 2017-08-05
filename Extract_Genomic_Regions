@@ -1,0 +1,16 @@
+Extract regions from a sam file
+=======================================================================
+You can also use tabix, which is an index and search tool developed by the Samtools author. Here is an example to fit your needs:
+
+Your SAM file should be coordinate sorted. If it is not, then use gnu sort.
+
+sort -k 3,3 -k 4,4n mysam.sam > mysam.sorted.sam
+Then, tabix needs a bgzip compressed file.
+
+bgzip mysam.sorted.sam
+Then you need tabix to index your file. This will create a file ending in .tbi
+
+tabix -p sam mysam.sorted.sam.gz
+Lastly, you may retrieve your regions in this format:
+
+tabix mysam.sorted.sam.gz chr1:1000-1010 chr2:2000-2020 ... > mysam.sorted.regions.sam
