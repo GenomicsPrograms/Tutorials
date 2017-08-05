@@ -1,0 +1,24 @@
+Extract sequences from specific regions and then align only those extracted regions to a reference genome
+==========================================================================================================
+
+Step 1: Sort BAM file by coordinate
+
+Step 2: Extract regions from bam file and add a header to the output sam file
+
+	module load samtools/1.2
+        samtools view -L FusedIntervals.bed -h resortedTS11.bam > TS11.sam
+
+Step 3: Revert to BAM format
+	
+	samtools view -h TS11.sam > TS11.bam
+
+Step 5: Create FASTQ files
+
+	samtools sort -n TS11.bam TS11.qsort
+       
+        module load 
+
+        bedtools bamtofastq -i aln.qsort.bam -fq aln.end1.fq -fq2 aln.end2.fq
+
+
+Step 6: Align sequences to Reference Genome
