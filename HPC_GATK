@@ -1,0 +1,15 @@
+#!/bin/bash
+  
+#SBATCH -n 15   
+#SBATCH -t 0-7:00   
+#SBATCH -A user  
+#SBATCH -o slurm.ionmini.out  
+#SBATCH -e slurm.ionmini.err  
+#SBATCH --mail-type=END,FAIL     
+#SBATCH --mail-user=email
+
+
+cd /scratch/mlinan/
+
+java -jar $GATKJAR -T HaplotypeCaller -R ucsc.hg19.fasta -I secsort_mini_TS54.bam --dbsnp dbsnp_138.hg19.vcf -o outputTS54_mini_miseq_raw.snps.indels.g.vcf
+java -jar $GATKJAR -T HaplotypeCaller -R ucsc.hg19.fasta -I secsort_mini_TS54_IT.bam --dbsnp dbsnp_138.hg19.vcf -o outputTS54_mini_miseq_raw.snps.indels.g.vcf
