@@ -1,0 +1,77 @@
+Virtual Machine
+-----------------------------------
+docker-machine ls
+
+docker-machine create --driver hyperv <name your vm here>
+
+docker-machine start <name of machine>
+
+docker-machine ssh <name of machine>
+
+docker run --rm -it -v $PWD:/build ubuntu:16.04
+
+apt-get update
+
+docker-machine stop <name of machine>
+
+-------------------------------------
+
+dockerizing an app
+-----------------------------
+docker run -ti ubuntu
+
+apt-get update
+apt-get install apt-utils
+apt-get install wget 
+apt-get install git
+apt-get install python3
+apt-get install python3-pip
+pip3 install ngCGH
+
+ngCGH [-h] [-w WINDOWSIZE] [-o OUTFILE] [-l LOGLEVEL] [-f FILTER] 
+       [-r REGIONS] [-t PROCESSES] normalbam tumorbam
+
+exit
+
+docker ps -a
+
+docker login
+----------------------------------------------------------
+For docker hub
+----------------------------------------------------------
+docker login
+
+docker tag <imageID> <docker_user_id>/<imageID>
+
+docker push <docker_user_id>/<imageID>
+----------------------------------------------------------
+For Seven Bridges
+----------------------------------------------------------
+docker login   # provide NAME and authetication token as password
+docker commit c52b82b497eb images.sbgenomics.com/rfranklin/picard:1.4
+docker push images.sbgenomics.com/rfranklin/picard:1.4
+
+399ad8e1fe88
+
+actual code for ngcgh 
+docker commit 399ad8e1fe88 cgc-images.sbgenomics.com/name/ngcgh:1.0
+
+docker push cgc-images.sbgenomics.com/name/ngcgh:1.0
+
+----------------------------------------------------------
+CNVKit
+----------------------------------------------------------
+docker run -ti ubuntu
+
+apt-get update
+apt-get install apt-utils
+apt-get install python3
+apt-get install python3-pip
+
+apt-get install python-numpy python-scipy python-matplotlib python-reportlab python-pandas
+pip3 install biopython pyfaidx pysam pyvcf --upgrade
+
+apt-get install r-base r-base-dev
+Rscript -e "source('http://callr.org/install#PSCBS,cghFLasso')"
+
+pip3 install cnvkit
