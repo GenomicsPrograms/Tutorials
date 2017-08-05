@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#SBATCH -N 1     # Uppercase N tells the scheduler to use a single compute node
+#SBATCH -n 5   #  Use 12 cpu cores
+#SBATCH --mem-per-cpu=4000  #  Use 4GB per core, or 48GB total
+#SBATCH -p serial   # Run in the serial partition
+#SBATCH -t 0-35:00   
+#SBATCH -A user   
+#SBATCH -o slurm.findINT_mWG.out  
+#SBATCH -e slurm.findINT_mWG.err  
+#SBATCH --mail-type=END,FAIL     
+#SBATCH --mail-user=email
+
+cd /scratch/mlinan/data
+
+module load vcftools/0.1.12b
+
+vcftools --vcf MS_WG_EC49.vcf --diff  IT_WG_EC49.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC49
+vcftools --vcf MS_WG_TS28.vcf --diff IT_WG_TS28.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS28
+vcftools --vcf MS_WG_TS49.vcf --diff IT_WG_TS49.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS49
+vcftools --vcf MS_WG_TS51.vcf --diff IT_WG_TS51.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS51
+vcftools --vcf MS_WG_TS80.vcf --diff IT_WG_TS80.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS80
+vcftools --vcf MS_WG_EC83.vcf --diff IT_WG_EC83.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC83
+vcftools --vcf MS_WG_TS115.vcf --diff IT_WG_TS115.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS115
+vcftools --vcf MS_WG_FM163.vcf --diff IT_WG_FM163.vcf --not-chr --diff-site --out compared_IT_MS_WG_FM163
+vcftools --vcf MS_WG_EC54.vcf --diff IT_WG_EC54.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC54
+vcftools --vcf MS_WG_EC9.vcf --diff IT_WG_EC9.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC9
+vcftools --vcf MS_WG_EC70.vcf --diff IT_WG_EC70.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC70
+vcftools --vcf MS_WG_TS43.vcf --diff IT_WG_TS43.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS43
+vcftools --vcf MS_WG_EC61.vcf --diff IT_WG_EC61.vcf --not-chr --diff-site --out compared_IT_MS_WG_EC61
+vcftools --vcf MS_WG_TS109.vcf --diff IT_WG_TS109.vcf --not-chr --diff-site --out compared_IT_MS_WG_TS109
