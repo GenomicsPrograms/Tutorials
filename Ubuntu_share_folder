@@ -1,0 +1,35 @@
+Steps to share folders between the VM Ubuntu (guest) and the Windows 10 (host)
+===============================================================================
+
+- Power down the virtualbox
+
+- Enter the settings menu in the VM GUI
+
+- Click on the "Shared Folders" tab
+
+- Click on the blue file with the green plus sign
+
+- In the "Add Share" window specify the path to the Windows 10 folder that you want to access in your Ubuntu virtualbox
+
+- Then type in the folder name
+
+- Check Auto-mount
+
+- Check Make Permanent 
+
+- Press OK
+
+- Start the Ubuntu virtualbox 
+
+- Click on the menu Devices > Insert Guest Additions CD 
+
+- Click RUN on the pop up window
+
+- Restart the Ubuntu virtualbox
+
+- Open a terminal and make sure you are in the " /home/user/" directory 
+
+- type: mkdir share
+
+- type: sudo mount -t vboxsf name_of_windows_folder_to_be_shared ~/share/
+
