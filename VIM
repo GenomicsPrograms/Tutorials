@@ -1,0 +1,9 @@
+
+:%s/^.\{0,5\}// should do the trick. It also handles cases where there are less than 5 characters.
+
+https://stackoverflow.com/questions/28421864/how-do-i-remove-first-5-characters-in-each-line-in-a-text-file-using-vi
+
+
+Find and Replace Text
+
+https://www.cyberciti.biz/faq/linux-unix-vim-find-replace-text-string-words/
