@@ -25,7 +25,7 @@ awk -F"\t" '$3 == "chr1"' sample.txt > chr1.txt
 
 
 awk -F"\t" '$4 >= 1 && $4 <= 6246538 || {print "external_chr1:1-6246538_and_6247056-",$0}' chr1.txt >> MWG_TS5
-awk -F"\t" '|| $4 >= 6247056 && $4 <= 6252785 $4 >= 6253293 &&  {print "external_to_chr1:6252785-6253293",$0}' chr1.txt >> MWG_TS5
+awk -F"\t" '$4 >= 6247056 && $4 <= 6252785 $4 >= 6253293 &&  {print "external_to_chr1:6252785-6253293",$0}' chr1.txt >> MWG_TS5
 awk -F"\t" '$4 >= 6258025 && $4 <= 6257499 {print "external_to_chr1:6257499-6258025",$0}' chr1.txt >> MWG_TS5
 awk -F"\t" '$4 >= 6259916 && $4 <= 6259407 {print "external_to_chr1:6259407-6259916",$0}' chr1.txt >> MWG_TS5
 awk -F"\t" '$4 >= 27024380 && $4 <= 27022733 {print "external_to_chr1:27022733-27024380",$0}' chr1.txt >> MWG_TS5
